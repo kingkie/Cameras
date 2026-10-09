@@ -1,0 +1,223 @@
+<Window
+    x:Class="A9Camera.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="A9 摄像头监视器 (PPPP 协议)"
+    Width="1180"
+    Height="720"
+    Closing="Window_Closing"
+    WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <!--  顶部：连接控制  -->
+        <Border
+            Grid.Row="0"
+            Padding="8"
+            Background="#F0F0F0">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock
+                    Margin="0,0,4,0"
+                    VerticalAlignment="Center"
+                    Text="本机IP:" />
+                <TextBox
+                    x:Name="TxtLocalIp"
+                    Width="120"
+                    VerticalAlignment="Center"
+                    Text="192.168.1.101" />
+                <TextBlock
+                    Margin="12,0,4,0"
+                    VerticalAlignment="Center"
+                    Text="广播地址:" />
+                <TextBox
+                    x:Name="TxtBroadcast"
+                    Width="130"
+                    VerticalAlignment="Center"
+                    Text="192.168.1.255" />
+                <Button
+                    x:Name="BtnConnect"
+                    Width="72"
+                    Height="26"
+                    Margin="16,0,0,0"
+                    Click="BtnConnect_Click"
+                    Content="连接"
+                    FontWeight="Bold" />
+                <Button
+                    x:Name="BtnDisconnect"
+                    Width="72"
+                    Height="26"
+                    Margin="8,0,0,0"
+                    Click="BtnDisconnect_Click"
+                    Content="断开"
+                    IsEnabled="False" />
+                <TextBlock
+                    x:Name="TxtStatus"
+                    Margin="20,0,0,0"
+                    VerticalAlignment="Center"
+                    FontWeight="Bold"
+                    Foreground="#888"
+                    Text="未连接" />
+            </StackPanel>
+        </Border>
+
+        <!--  中部：视频 + 信息/日志  -->
+        <Grid Grid.Row="1" Margin="8">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="330" />
+            </Grid.ColumnDefinitions>
+
+            <!--  视频画面  -->
+            <Border
+                Grid.Column="0"
+                Background="Black"
+                CornerRadius="4">
+                <Grid>
+                    <Image
+                        x:Name="ImgVideo"
+                        Margin="4"
+                        Stretch="Uniform" />
+                    <TextBlock
+                        x:Name="TxtNoVideo"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        FontSize="18"
+                        Foreground="#666"
+                        Text="等待视频流..." />
+                </Grid>
+            </Border>
+
+            <!--  右侧：摄像头信息 + 远程控制 + 日志  -->
+            <Grid Grid.Column="1" Margin="8,0,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <GroupBox
+                    Grid.Row="0"
+                    Padding="8"
+                    Header="摄像头信息">
+                    <TextBlock
+                        x:Name="TxtCamInfo"
+                        FontSize="12"
+                        LineHeight="18"
+                        Text="连接后自动读取参数"
+                        TextWrapping="Wrap" />
+                </GroupBox>
+
+                <GroupBox
+                    Grid.Row="1"
+                    Margin="0,8,0,0"
+                    Padding="8"
+                    Header="远程控制"
+                    IsEnabled="True">
+                    <StackPanel x:Name="PnlCommands">
+                        <WrapPanel Margin="0,0,0,6">
+                            <Button
+                                Width="88"
+                                Height="24"
+                                Margin="6"
+                                Click="BtnScanWifi_Click"
+                                Content="扫描WiFi" />
+                            <Button
+                                Width="88"
+                                Height="24"
+                                Margin="6"
+                                Click="BtnGetWifi_Click"
+                                Content="获取WiFi" />
+                            <Button
+                                Width="66"
+                                Height="24"
+                                Margin="6"
+                                Click="BtnIrOn_Click"
+                                Content="红外开" />
+                            <Button
+                                Width="88"
+                                Height="24"
+                                Margin="6"
+                                Click="Get720P_Click"
+                                Content="流720P" />
+                            <Button
+                                Width="88"
+                                Height="24"
+                                Margin="6"
+                                Click="Get1080P_Click"
+                                Content="流1080P" />
+                            <Button
+                                Width="66"
+                                Height="24"
+                                Margin="6"
+                                Click="BtnIrOff_Click"
+                                Content="红外关" />
+                        </WrapPanel>
+                        <WrapPanel Margin="0,0,0,6">
+                            <TextBlock
+                                Margin="0,0,4,0"
+                                VerticalAlignment="Center"
+                                Text="SSID:" />
+                            <TextBox
+                                x:Name="TxtSsid"
+                                Width="72"
+                                Height="24"
+                                VerticalContentAlignment="Center" />
+                            <TextBlock
+                                Margin="6,0,4,0"
+                                VerticalAlignment="Center"
+                                Text="密码:" />
+                            <TextBox
+                                x:Name="TxtWifiPwd"
+                                Width="72"
+                                Height="24"
+                                VerticalContentAlignment="Center" />
+                            <Button
+                                Width="88"
+                                Height="24"
+                                Margin="6"
+                                Click="BtnSetWifi_Click"
+                                Content="设置WiFi" />
+                        </WrapPanel>
+                        <WrapPanel>
+                            <Button
+                                Width="88"
+                                Height="24"
+                                Margin="6,0,6,0"
+                                Click="BtnReboot_Click"
+                                Content="重启设备" />
+                            <Button
+                                Width="88"
+                                Height="24"
+                                Margin="6,0,6,0"
+                                Click="BtnReset_Click"
+                                Content="恢复出厂" />
+                        </WrapPanel>
+                    </StackPanel>
+                </GroupBox>
+
+                <GroupBox
+                    Grid.Row="2"
+                    Margin="0,8,0,0"
+                    Padding="4"
+                    Header="运行日志">
+                    <ListBox
+                        x:Name="LstLog"
+                        FontFamily="Consolas"
+                        FontSize="11.5"
+                        ScrollViewer.HorizontalScrollBarVisibility="Auto" />
+                </GroupBox>
+            </Grid>
+        </Grid>
+
+        <!--  底部：统计  -->
+        <StatusBar Grid.Row="2">
+            <StatusBarItem>
+                <TextBlock x:Name="TxtStats" Text="帧: 0" />
+            </StatusBarItem>
+        </StatusBar>
+    </Grid>
+</Window>

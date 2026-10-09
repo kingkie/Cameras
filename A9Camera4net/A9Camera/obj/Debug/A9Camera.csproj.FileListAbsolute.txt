@@ -1,0 +1,11 @@
+g:\aCVs\7Examples\Videos\A9_PPPP-master\A9Camera\A9Camera\bin\Debug\A9Camera.exe
+g:\aCVs\7Examples\Videos\A9_PPPP-master\A9Camera\A9Camera\bin\Debug\A9Camera.pdb
+g:\aCVs\7Examples\Videos\A9_PPPP-master\A9Camera\A9Camera\obj\Debug\A9Camera.csproj.AssemblyReference.cache
+g:\aCVs\7Examples\Videos\A9_PPPP-master\A9Camera\A9Camera\obj\Debug\MainWindow.baml
+g:\aCVs\7Examples\Videos\A9_PPPP-master\A9Camera\A9Camera\obj\Debug\MainWindow.g.cs
+g:\aCVs\7Examples\Videos\A9_PPPP-master\A9Camera\A9Camera\obj\Debug\App.g.cs
+g:\aCVs\7Examples\Videos\A9_PPPP-master\A9Camera\A9Camera\obj\Debug\A9Camera_MarkupCompile.cache
+g:\aCVs\7Examples\Videos\A9_PPPP-master\A9Camera\A9Camera\obj\Debug\A9Camera.g.resources
+g:\aCVs\7Examples\Videos\A9_PPPP-master\A9Camera\A9Camera\obj\Debug\A9Camera.csproj.CoreCompileInputs.cache
+g:\aCVs\7Examples\Videos\A9_PPPP-master\A9Camera\A9Camera\obj\Debug\A9Camera.exe
+g:\aCVs\7Examples\Videos\A9_PPPP-master\A9Camera\A9Camera\obj\Debug\A9Camera.pdb
